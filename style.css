@@ -1,0 +1,172 @@
+/* ===== Kalkulator Sederhana - style.css ===== */
+
+:root {
+    --bg: #f4f5f9;
+    --card: #ffffff;
+    --text: #1f2437;
+    --muted: #8a90a6;
+    --border: #e3e6ef;
+    --accent: #4f46e5;
+    --accent-hover: #4338ca;
+    --accent-soft: rgba(79, 70, 229, 0.15);
+    --result-bg: #f0efff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #12141c;
+        --card: #1b1e2b;
+        --text: #eceef6;
+        --muted: #7d839a;
+        --border: #2b2f42;
+        --accent: #7c75ff;
+        --accent-hover: #918bff;
+        --accent-soft: rgba(124, 117, 255, 0.2);
+        --result-bg: #232743;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* Kartu utama */
+.Kotak {
+    width: 100%;
+    max-width: 380px;
+    padding: 36px 32px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(31, 36, 55, 0.08);
+}
+
+h1 {
+    margin-bottom: 28px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: -0.01em;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder {
+    color: var(--muted);
+}
+
+input:focus,
+select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+select {
+    cursor: pointer;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Hilangkan panah spinner di input number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Tombol */
+button {
+    margin-top: 6px;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background: var(--accent-hover);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Hasil */
+.hasil {
+    margin-top: 24px;
+    padding: 18px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--muted);
+    background: var(--result-bg);
+    border-radius: 12px;
+    animation: muncul 0.35s ease;
+}
+
+.hasil strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    word-break: break-all;
+}
+
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Layar kecil */
+@media (max-width: 420px) {
+    .Kotak {
+        padding: 28px 22px;
+    }
+}
