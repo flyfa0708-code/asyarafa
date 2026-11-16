@@ -1,172 +1,140 @@
-/* ===== Kalkulator Sederhana - style.css ===== */
 
-:root {
-    --bg: #f4f5f9;
-    --card: #ffffff;
-    --text: #1f2437;
-    --muted: #8a90a6;
-    --border: #e3e6ef;
-    --accent: #4f46e5;
-    --accent-hover: #4338ca;
-    --accent-soft: rgba(79, 70, 229, 0.15);
-    --result-bg: #f0efff;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg: #12141c;
-        --card: #1b1e2b;
-        --text: #eceef6;
-        --muted: #7d839a;
-        --border: #2b2f42;
-        --accent: #7c75ff;
-        --accent-hover: #918bff;
-        --accent-soft: rgba(124, 117, 255, 0.2);
-        --result-bg: #232743;
-    }
-}
-
+/* Reset */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+/* Background */
 body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #eef1ef;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: #333d38;
 }
 
-/* Kartu utama */
-.Kotak {
-    width: 100%;
-    max-width: 380px;
-    padding: 36px 32px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(31, 36, 55, 0.08);
-}
-
+/* Judul */
 h1 {
-    margin-bottom: 28px;
-    font-size: 1.4rem;
+    font-size: 30px;
     font-weight: 600;
-    text-align: center;
-    letter-spacing: -0.01em;
+    color: #40564b;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
 }
 
-/* Form */
+/* Form Kalkulator */
 form {
+    background: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(40, 60, 48, 0.08);
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 18px;
 }
 
-input,
-select {
+/* Input */
+input {
     width: 100%;
     padding: 14px 16px;
-    font-size: 1rem;
-    font-family: inherit;
-    color: var(--text);
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    border: 1px solid #dce4de;
+    border-radius: 10px;
+    background: #f8faf8;
+    font-size: 15px;
+    color: #34443a;
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: 0.3s;
 }
 
 input::placeholder {
-    color: var(--muted);
+    color: #a0aaa3;
 }
 
-input:focus,
-select:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 4px var(--accent-soft);
+input:focus {
+    border-color: #829b89;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(130, 155, 137, 0.12);
 }
 
+/* Pilihan Operasi */
 select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dce4de;
+    border-radius: 10px;
+    background: #f8faf8;
+    color: #40564b;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    text-align: center;
-    font-weight: 500;
+    outline: none;
 }
 
-/* Hilangkan panah spinner di input number */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-input[type="number"] {
-    -moz-appearance: textfield;
+select:focus {
+    border-color: #829b89;
 }
 
 /* Tombol */
 button {
-    margin-top: 6px;
+    width: 100%;
     padding: 14px;
-    font-size: 1rem;
-    font-weight: 600;
-    font-family: inherit;
-    color: #fff;
-    background: var(--accent);
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
+    background: #718b78;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
+    transition: 0.3s;
+    letter-spacing: 0.5px;
 }
 
 button:hover {
-    background: var(--accent-hover);
+    background: #5c7663;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(92, 118, 99, 0.2);
 }
 
 button:active {
     transform: scale(0.98);
 }
 
-/* Hasil */
+/* Hasil Perhitungan */
 .hasil {
-    margin-top: 24px;
-    padding: 18px;
-    text-align: center;
-    font-size: 0.95rem;
-    color: var(--muted);
-    background: var(--result-bg);
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+    padding: 20px;
+    background: #e1ebe3;
+    border: 1px solid #d2dfd5;
     border-radius: 12px;
-    animation: muncul 0.35s ease;
+    color: #40564b;
+    font-size: 16px;
+    text-align: center;
 }
 
 .hasil strong {
     display: block;
-    margin-top: 4px;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--accent);
-    word-break: break-all;
+    margin-top: 8px;
+    font-size: 24px;
+    color: #4f7158;
 }
 
-@keyframes muncul {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
+/* Responsive */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 26px;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-/* Layar kecil */
-@media (max-width: 420px) {
-    .Kotak {
-        padding: 28px 22px;
+    form {
+        padding: 22px;
     }
 }
